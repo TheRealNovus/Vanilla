@@ -278,8 +278,8 @@ public class Human extends Living {
 		setFlyingSpeed(speed, true);
 	}
 
-	public byte getFlyingSpeed() {
-		return getOwner().getData().get(VanillaData.FLYING_SPEED).byteValue();
+	public float getFlyingSpeed() {
+		return getOwner().getData().get(VanillaData.FLYING_SPEED).floatValue();
 	}
 
 	public void setWalkingSpeed(float speed, boolean updateClient) {
@@ -295,8 +295,8 @@ public class Human extends Living {
 		setWalkingSpeed(speed, true);
 	}
 
-	public byte getWalkingSpeed() {
-		return getOwner().getData().get(VanillaData.WALKING_SPEED).byteValue();
+	public float getWalkingSpeed() {
+		return getOwner().getData().get(VanillaData.WALKING_SPEED).floatValue();
 	}
 
 	public void setCanFly(boolean canFly, boolean updateClient) {
