@@ -18,7 +18,7 @@
 		<mainClass>org.spout.vanilla.VanillaPlugin</mainClass>
 		<protocolClass>org.spout.vanilla.protocol.VanillaProtocol</protocolClass>
 		<spoutVersion>dev-SNAPSHOT</spoutVersion>
-		<protocolVersion>67</protocolVersion>
+		<protocolVersion>73</protocolVersion>
 		<buildNumber>0</buildNumber>
 	</properties>
 

@@ -53,6 +53,7 @@ import org.spout.vanilla.protocol.msg.entity.EntityEquipmentMessage;
 import org.spout.vanilla.protocol.msg.entity.EntityInitializeMessage;
 import org.spout.vanilla.protocol.msg.entity.EntityItemDataMessage;
 import org.spout.vanilla.protocol.msg.entity.EntityMetadataMessage;
+import org.spout.vanilla.protocol.msg.entity.EntityPropertiesMessage;
 import org.spout.vanilla.protocol.msg.entity.EntityStatusMessage;
 import org.spout.vanilla.protocol.msg.entity.EntityTileDataMessage;
 import org.spout.vanilla.protocol.msg.entity.SteerVehicleMessage;
@@ -210,7 +211,8 @@ public class VanillaProtocolTest extends BaseProtocolTest {
 			new ScoreboardDisplayMessage((byte) 1, "name"),
 			new ScoreboardTeamMessage("teamName", (byte) 0, "displayName", "prefix", "suffix", false, null),
 			new BlockBreakAnimationMessage(1, 1, 1, 1, (byte) 2, NullRepositionManager.getInstance()),
-			new SteerVehicleMessage(0.5f,0.6f,false, false)
+			new SteerVehicleMessage(0.5f,0.6f,false, false),
+			new EntityPropertiesMessage(15)
 	};
 
 	static {

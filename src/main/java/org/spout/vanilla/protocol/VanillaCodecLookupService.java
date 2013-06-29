@@ -38,6 +38,7 @@ import org.spout.vanilla.protocol.codec.entity.EntityEquipmentCodec;
 import org.spout.vanilla.protocol.codec.entity.EntityInitializeCodec;
 import org.spout.vanilla.protocol.codec.entity.EntityItemDataCodec;
 import org.spout.vanilla.protocol.codec.entity.EntityMetadataCodec;
+import org.spout.vanilla.protocol.codec.entity.EntityPropertiesCodec;
 import org.spout.vanilla.protocol.codec.entity.EntityRelativePositionCodec;
 import org.spout.vanilla.protocol.codec.entity.EntityStatusCodec;
 import org.spout.vanilla.protocol.codec.entity.EntityTileDataCodec;
@@ -197,6 +198,8 @@ public class VanillaCodecLookupService extends CodecLookupService {
 			bind(EntityRemoveEffectCodec.class);
 			/* 0x2B */
 			bind(PlayerExperienceCodec.class);
+			/* 0x2c */
+			bind(EntityPropertiesCodec.class);
 			/* 0x33 */
 			bind(ChunkDataCodec.class); //TODO rename on the minecraft protocol page
 			/* 0x34 */
