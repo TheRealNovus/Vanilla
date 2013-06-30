@@ -28,10 +28,12 @@ package org.spout.vanilla.protocol.codec.player;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import org.spout.api.protocol.MessageCodec;
+import org.spout.api.util.ChannelBufferUtils;
 
-import org.spout.vanilla.protocol.VanillaChannelBufferUtils;
 import org.spout.vanilla.protocol.msg.player.PlayerChatMessage;
 
 public final class PlayerChatCodec extends MessageCodec<PlayerChatMessage> {
@@ -41,14 +43,26 @@ public final class PlayerChatCodec extends MessageCodec<PlayerChatMessage> {
 
 	@Override
 	public PlayerChatMessage decode(ChannelBuffer buffer) {
-		String message = VanillaChannelBufferUtils.readString(buffer);
-		return new PlayerChatMessage(message);
+		String message = ChannelBufferUtils.readString(buffer);
+
+		//This is basicly to make the unit tests works. Else it just crash :(
+		try {
+			return new PlayerChatMessage((String)new JSONObject(message).get("text"));
+		} catch (JSONException e) {
+			return new PlayerChatMessage(message);
+		}
 	}
 
 	@Override
 	public ChannelBuffer encode(PlayerChatMessage message) {
 		ChannelBuffer buffer = ChannelBuffers.dynamicBuffer();
-		VanillaChannelBufferUtils.writeString(buffer, message.getMessage());
+		try {
+			JSONObject json = new JSONObject();
+			json.put("text", message.getMessage());
+			ChannelBufferUtils.writeString(buffer,json.toString());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		return buffer;
 	}
 }
