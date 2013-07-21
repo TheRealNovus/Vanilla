@@ -38,7 +38,7 @@ import org.spout.api.protocol.reposition.RepositionManager;
 
 import org.spout.vanilla.component.entity.substance.FallingBlock;
 import org.spout.vanilla.material.VanillaBlockMaterial;
-import org.spout.vanilla.protocol.ChannelBufferUtils;
+import org.spout.vanilla.protocol.VanillaChannelBufferUtils;
 import org.spout.vanilla.protocol.msg.entity.EntityMetadataMessage;
 import org.spout.vanilla.protocol.msg.entity.spawn.EntityObjectMessage;
 
@@ -60,8 +60,8 @@ public class FallingBlockProtocol extends ObjectEntityProtocol {
 			int x = (int) Math.floor(pos.getX() * p);
 			int y = (int) Math.floor(pos.getY() * p);
 			int z = (int) Math.floor(pos.getZ() * p);
-			byte yaw = (byte) ChannelBufferUtils.protocolifyYaw(entity.getScene().getRotation().getYaw());
-			byte pitch = (byte) ChannelBufferUtils.protocolifyPitch(entity.getScene().getRotation().getPitch());
+			byte yaw = (byte) VanillaChannelBufferUtils.protocolifyYaw(entity.getScene().getRotation().getYaw());
+			byte pitch = (byte) VanillaChannelBufferUtils.protocolifyPitch(entity.getScene().getRotation().getPitch());
 			short fallSpeed = (short) (block.getFallingSpeed() * 8000d);
 			messages.add(new EntityObjectMessage(entity.getId(), (byte) typeId, x, y, z, messageData, (short) 0, fallSpeed, (short) 0, yaw, pitch, rm));
 			messages.add(new EntityMetadataMessage(entity.getId(), getSpawnParameters(entity)));
